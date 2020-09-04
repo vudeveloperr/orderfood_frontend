@@ -1,5 +1,14 @@
 import React from 'react';
 import NaviItem from './NaviItem.js'
+import HeaderMenuDropDown from './HeaderMenuDropDown'
+import HeaderMenuDropDownItem from "./HeaderMenuDropDownItem"
+
+const pagesitem = <> 
+<HeaderMenuDropDownItem value="Shop Details" href="#"/>
+<HeaderMenuDropDownItem value="Shopping Cart" href="#"/>
+<HeaderMenuDropDownItem value="Check Out" href="#"/>
+<HeaderMenuDropDownItem value="Blog Details" href="#"/>
+</>
 
 
 class NaviBar extends React.Component {
@@ -10,7 +19,7 @@ class NaviBar extends React.Component {
                     <ul>
                         <NaviItem value="Home" href="#" />
                         <NaviItem value="Shop" href="#" />
-                        <NaviItem value="Pages" href="#" />
+                        <NaviItem value="Pages" href="#" dropdown={<HeaderMenuDropDown items={pagesitem}/>}/>
                         <NaviItem value="Blog" href="#" />
                         <NaviItem value="Contact" href="#" />
                     </ul>

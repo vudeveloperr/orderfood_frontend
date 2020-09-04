@@ -6,6 +6,7 @@ class NaviItem extends React.Component{
         return(
             <li>
                 <a href={this.props.href}>{this.props.value}</a>
+                {this.props.dropdown}
             </li>
         );
     }

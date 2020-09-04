@@ -1,0 +1,25 @@
+.newul ul {
+    border: 1px solid #ebebeb;
+    padding-left: 18px;
+    margin-top: -34px;
+    padding-bottom: 12px;
+    display: block;
+    position: absolute;
+    background: #ffffff;
+    width: 21%;
+}
+.newul ul li {
+    list-style: none;
+}
+
+.newul ul li a {
+    font-size: 16px;
+	color: #1c1c1c;
+	line-height: 39px;
+	display: block;
+}
+
+.newul ul li a:hover {
+    text-decoration-line: underline;
+    cursor: pointer;
+}

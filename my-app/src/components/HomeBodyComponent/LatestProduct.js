@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductItem from "./ProductItem"
@@ -10,6 +9,7 @@ class LatestProduct extends React.Component {
     render() {
         const settings = {
           dots: false,
+          arrows: false,
           autoplay: true,
           infinite: true,
           autoplaySpeed: 3000,
@@ -17,8 +17,8 @@ class LatestProduct extends React.Component {
           slidesToScroll: 1
         };
         return (
-          <div>
-            <h2> Single Item</h2>
+          <div class="singleslide">
+            <h2> Some Content</h2>
             <Slider {...settings}>
               <ProductItem></ProductItem>
               <ProductItem></ProductItem>

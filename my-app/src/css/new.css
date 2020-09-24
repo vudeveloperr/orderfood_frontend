@@ -38,4 +38,10 @@
 .slick-prev:before, .slick-next:before {
     color: #7fad39;
 }
+
+/* new style */
+
+.singleslide {
+    margin-top: 60px;
+}
   

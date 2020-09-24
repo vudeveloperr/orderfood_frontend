@@ -858,7 +858,7 @@ ol {
 }
 
 .featured__item:hover .featured__item__pic .featured__item__pic__hover {
-	bottom: 20px;
+	bottom: 0px;
 }
 
 .featured__item__pic {
@@ -871,7 +871,7 @@ ol {
 .featured__item__pic__hover {
 	position: absolute;
 	left: 0;
-	bottom: -50px;
+	bottom: -60px;
 	width: 100%;
 	text-align: center;
 	-webkit-transition: all, 0.5s;

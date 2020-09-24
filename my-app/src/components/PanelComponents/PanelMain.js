@@ -1,6 +1,9 @@
 import React from 'react';
-import PanelSearchBar from './PanelSearchBar';
 import PanelPoster from './PanelPoster';
+import PanelSearchBar from './PanelSearchBar';
+
+
+
 class PanelMain extends React.Component{
     render(){
         return(

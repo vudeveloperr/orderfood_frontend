@@ -17,8 +17,8 @@ class NaviBar extends React.Component {
             <div className="col-lg-6">
                 <nav className="header__menu">
                     <ul>
-                        <NaviItem value="Home" href="#" />
-                        <NaviItem value="Shop" href="#" />
+                        <NaviItem value="Home" href="/" />
+                        <NaviItem value="Shop" href="/shop" />
                         <NaviItem value="Pages" href="#" dropdown={<HeaderMenuDropDown items={pagesitem}/>}/>
                         <NaviItem value="Blog" href="#" />
                         <NaviItem value="Contact" href="#" />

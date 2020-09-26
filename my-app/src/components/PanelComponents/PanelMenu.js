@@ -4,9 +4,15 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 class PanelMenu extends React.Component {
     constructor(props){
         super(props);
+        if (this.props.visible == false){
+            this.state = {style : {opacity: 0, height:'0px',padding:'0px', overflow: 'hidden'}};
+        }
+        else{
         this.state = {style : {opacity:1}};
+        }
     }
     toggleMenu(){
+        console.log(this.state.style)
         if(this.state.style.opacity != 0){
             this.setState({style : {opacity: 0, height:'0px',padding:'0px', overflow: 'hidden'}});
         }

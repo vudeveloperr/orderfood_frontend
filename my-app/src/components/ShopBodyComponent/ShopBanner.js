@@ -3,7 +3,7 @@ import React from 'react'
 class ShopBanner extends React.Component{
     render(){
         return(
-            <section className="breadcrumb-section" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/img/breadcrumb.jpg'})`}}>
+            <section className="breadcrumb-section" style={{backgroundImage: `url(${process.env.PUBLIC_URL + '/img/breadcrumb.jpg'})`,backgroundRepeat: 'no-repeat', backgroundSize: 'cover',backgroundPosition: 'top center'}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12 text-center">

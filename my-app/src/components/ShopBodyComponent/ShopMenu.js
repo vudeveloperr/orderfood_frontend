@@ -21,7 +21,7 @@ var items = <>
 class ShopMenu extends React.Component{
     render(){
         return (
-            <section class="hero">
+            <section class="hero hero-normal">
                 <div class="container">
                     <div class="row">
                         <PanelMenu visible={false} items={items}></PanelMenu>

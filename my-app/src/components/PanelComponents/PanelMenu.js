@@ -8,7 +8,7 @@ class PanelMenu extends React.Component {
             this.state = {style : {opacity: 0, height:'0px',padding:'0px', overflow: 'hidden'}};
         }
         else{
-        this.state = {style : {opacity:1}};
+        this.state = {style : {opacity:1, display:'block'}};
         }
     }
     toggleMenu(){
@@ -17,7 +17,7 @@ class PanelMenu extends React.Component {
             this.setState({style : {opacity: 0, height:'0px',padding:'0px', overflow: 'hidden'}});
         }
         else{
-            this.setState({style : {opacity:1}});
+            this.setState({style : {opacity:1, display:'block'}});
         }
        
     }

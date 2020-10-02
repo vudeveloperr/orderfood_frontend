@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from './components/HeaderComponents/Header';
+import Footer from './components/FooterComponents/Footer';
 
 import Home from './container/Home/Home'
 import Shop from './container/Shop/Shop'
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Route path="/shop" component={Shop} />
       </div>
     </Router>
+    <Footer></Footer>
   </>,
   document.getElementById('root')
 );

@@ -20,6 +20,10 @@ class Feature extends React.Component {
                     </div>
                     <div className="row featured__filter">
                         <FeatureItem></FeatureItem>
+                        <FeatureItem></FeatureItem>
+                        <FeatureItem></FeatureItem>
+                        <FeatureItem></FeatureItem>
+                        <FeatureItem></FeatureItem>
                     </div>
                 </div>
             </section>

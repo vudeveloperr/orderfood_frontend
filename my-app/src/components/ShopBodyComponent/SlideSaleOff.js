@@ -1,22 +1,19 @@
-
 import React from 'react';
-import ReactDOM from "react-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SliderItem from "./SliderItem"
+import SaleOffItem from "./SaleOffItem"
 
 import Slider from "react-slick";
 
-class Categories extends React.Component {
+class SlideSaleOff extends React.Component {
     render() {
         var settings = {
-            dots: false,
+            dots: true,
             autoplay: true,
             autoplaySpeed: 3000,
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToScroll: 2,
-            nextArrow: false,
-            prevArrow: false,
+            arrows:false,
             swipeToSlide: true,
             initialSlide: 0,
             responsive: [
@@ -47,26 +44,21 @@ class Categories extends React.Component {
             ]
         };
         return (
-            <div className="container">
-                <div className="AppSl">
-                    <Slider {...settings}>
-                        <SliderItem></SliderItem>
-                        <SliderItem></SliderItem>
-                        <SliderItem></SliderItem>
-                        <SliderItem></SliderItem>
-                        <SliderItem></SliderItem>
-                        <SliderItem></SliderItem>
-                        <SliderItem></SliderItem>
-                        <SliderItem></SliderItem>
-                    </Slider>
-                </div>
+            <div className="AppSl">
+                <Slider {...settings}>
+                    <SaleOffItem></SaleOffItem>
+                    <SaleOffItem></SaleOffItem>
+                    <SaleOffItem></SaleOffItem>
+                    <SaleOffItem></SaleOffItem>
+                    <SaleOffItem></SaleOffItem>
+                    <SaleOffItem></SaleOffItem>
+                    <SaleOffItem></SaleOffItem>
+                    <SaleOffItem></SaleOffItem>
+                </Slider>
             </div>
         );
+
     }
 }
 
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Categories />, rootElement);
-
-export default Categories;
+export default SlideSaleOff;

@@ -3,19 +3,19 @@ import Contact from './Contact';
 class PanelSearchBar extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { style: { opacity: 0, height:'0px',padding:'0px', overflow: 'hidden' }, categories:'All Categories' };
+        this.state = { style: { opacity: 0, height: '0px', padding: '0px', overflow: 'hidden' }, categories: 'All Categories' };
     }
-    toggle(){
+    toggle() {
         if (this.state.style.opacity != 0) {
-            this.setState({ style: { opacity: 0 , height:'0px',padding:'0px', overflow: 'hidden'} });
+            this.setState({ style: { opacity: 0, height: '0px', padding: '0px', overflow: 'hidden' } });
         }
         else {
             this.setState({ style: { opacity: 1 } });
         }
     }
 
-    changeCategories(event){
-        this.setState({ style: { opacity: 0 , height:'0px',padding:'0px', overflow: 'hidden'}, categories : event.target.innerText} );
+    changeCategories(event) {
+        this.setState({ style: { opacity: 0, height: '0px', padding: '0px', overflow: 'hidden' }, categories: event.target.innerText });
     }
     render() {
         return (
@@ -25,20 +25,20 @@ class PanelSearchBar extends React.Component {
                         <form action="#">
                             <div className="hero__search__categories" onClick={() => { this.toggle() }}>
                                 {this.state.categories}
-                            <span className="arrow_carrot-down"></span>
+                                <span className="arrow_carrot-down"></span>
                             </div>
                             <input type="text" placeholder="What do you need ?"></input>
                             <button type="submit" className="site-btn">SEARCH</button>
                         </form>
                     </div>
+                    <div className="newul">
+                        <ul style={{ ...{ transition: 'opacity ease-in-out 1s 0s' }, ...this.state.style }}>
+                            <li><a onClick={(event) => { this.changeCategories(event) }}>All Categories</a></li>
+                            <li><a onClick={(event) => { this.changeCategories(event) }}>Fresh Meat</a></li>
+                            <li><a onClick={(event) => { this.changeCategories(event) }}>Vegetables</a></li>
+                        </ul>
+                    </div>
                     <Contact number="0978004683"></Contact>
-                </div>
-                <div className="newul">
-                    <ul style={{ ...{ transition: 'opacity ease-in-out 1s 0s' }, ...this.state.style }}>
-                    <li><a onClick={(event) => {this.changeCategories(event)}}>All Categories</a></li>
-                        <li><a onClick={(event) => {this.changeCategories(event)}}>Fresh Meat</a></li>
-                        <li><a onClick={(event) => {this.changeCategories(event)}}>Vegetables</a></li>
-                    </ul>
                 </div>
             </>
         );

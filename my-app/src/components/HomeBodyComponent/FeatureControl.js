@@ -7,7 +7,7 @@ class FeatureControl extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState){
-        if (this.state.numbers == nextState){
+        if (this.state.numbers === nextState){
             return false
         }
         else{

@@ -8,7 +8,7 @@ class Shop extends React.Component {
         return (
             <>
            <ShopMenu></ShopMenu>
-           <ShopBanner></ShopBanner>
+           <ShopBanner bannertext="Organi Shop" links={<a href="/">Home</a>} text="Shop"></ShopBanner>
            <ShopProduct></ShopProduct>
            </>
         );

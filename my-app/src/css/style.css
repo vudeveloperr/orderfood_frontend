@@ -1535,7 +1535,7 @@ ol {
 }
 
 .product__item:hover .product__item__pic .product__item__pic__hover {
-	bottom: 20px;
+	bottom: 0px;
 }
 
 .product__item__pic {
@@ -1816,7 +1816,7 @@ ol {
 	left: 0;
 	top: 12px;
 	height: 1px;
-	width: 370px;
+	width: 30%;
 	background: #ebebeb;
 	content: "";
 }
@@ -1826,7 +1826,7 @@ ol {
 	right: 0;
 	top: 12px;
 	height: 1px;
-	width: 370px;
+	width: 30%;
 	background: #ebebeb;
 	content: "";
 }

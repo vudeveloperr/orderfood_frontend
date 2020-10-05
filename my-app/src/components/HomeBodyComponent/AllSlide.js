@@ -22,7 +22,4 @@ class AllSlide extends React.Component {
     }
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<AllSlide />, rootElement);
-
 export default AllSlide;

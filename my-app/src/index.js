@@ -6,8 +6,6 @@ import Footer from './components/FooterComponents/Footer';
 import Home from './container/Home/Home';
 import Shop from './container/Shop/Shop';
 import Login from './container/Account/Login';
-import Home from './container/Home/Home'
-import Shop from './container/Shop/Shop'
 import ShopDetail from './container/ShopDetail/ShopDetail';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -19,8 +17,7 @@ import "./sass/_header.scss";
 import "./sass/_responsive.scss";
 import "./css/bootstrap.min.css";
 import "./css/owl.carousel.min.css";
-import "./css/login.css"
-import "./css/owl.carousel.min.css"
+import "./css/login.css";
 import "./css/nice-select.css"
 
 

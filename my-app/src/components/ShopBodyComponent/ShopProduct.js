@@ -2,6 +2,9 @@ import React from 'react';
 import ShopSideBar from "./ShopSideBar"
 import SlideSaleOff from "./SlideSaleOff"
 
+import ShopItemFilter from "./ShopItemFilter"
+import ShopProductItem from "./ShopProductItem"
+
 class ShopProduct extends React.Component {
     render() {
         return (
@@ -16,6 +19,16 @@ class ShopProduct extends React.Component {
                                 <h2>Sale Off</h2>
                             </div>
                             <SlideSaleOff></SlideSaleOff>
+                            <ShopItemFilter></ShopItemFilter>
+                            <div className="row">
+                                <ShopProductItem></ShopProductItem>
+                                <ShopProductItem></ShopProductItem>
+                                <ShopProductItem></ShopProductItem>
+                                <ShopProductItem></ShopProductItem>
+                                <ShopProductItem></ShopProductItem>
+                                <ShopProductItem></ShopProductItem>
+                                <ShopProductItem></ShopProductItem>
+                            </div>
                         </div>
                     </div>
                 </div>

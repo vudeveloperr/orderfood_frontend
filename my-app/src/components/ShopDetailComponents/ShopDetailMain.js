@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import ShopDetailItem from './ShopDetailItem';
 
 
 class ShopDetailMain extends React.Component {
@@ -41,76 +42,12 @@ class ShopDetailMain extends React.Component {
                                                 <th>Price</th>
                                                 <th>Quantity</th>
                                                 <th>Total</th>
-                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td className="shoping__cart__item">
-                                                    <img src="img/cart/cart-1.jpg" alt="" />
-                                                    <h5>Vegetable’s Package</h5>
-                                                </td>
-                                                <td className="shoping__cart__price">
-                                                    $55.00
-                                    </td>
-                                                <td className="shoping__cart__quantity">
-                                                    <div className="quantity">
-                                                        <div className="pro-qty"><span className="dec qtybtn">-</span>
-                                                            <input type="text" value="1" />
-                                                            <span className="inc qtybtn">+</span></div>
-                                                    </div>
-                                                </td>
-                                                <td className="shoping__cart__total">
-                                                    $110.00
-                                    </td>
-                                                <td className="shoping__cart__item__close">
-                                                    <span className="icon_close"></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="shoping__cart__item">
-                                                    <img src="img/cart/cart-2.jpg" alt="" />
-                                                    <h5>Fresh Garden Vegetable</h5>
-                                                </td>
-                                                <td className="shoping__cart__price">
-                                                    $39.00
-                                    </td>
-                                                <td className="shoping__cart__quantity">
-                                                    <div className="quantity">
-                                                        <div className="pro-qty"><span className="dec qtybtn">-</span>
-                                                            <input type="text" value="1" />
-                                                            <span className="inc qtybtn">+</span></div>
-                                                    </div>
-                                                </td>
-                                                <td className="shoping__cart__total">
-                                                    $39.99
-                                    </td>
-                                                <td className="shoping__cart__item__close">
-                                                    <span className="icon_close"></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className="shoping__cart__item">
-                                                    <img src="img/cart/cart-3.jpg" alt="" />
-                                                    <h5>Organic Bananas</h5>
-                                                </td>
-                                                <td className="shoping__cart__price">
-                                                    $69.00
-                                    </td>
-                                                <td className="shoping__cart__quantity">
-                                                    <div className="quantity">
-                                                        <div className="pro-qty"><span class="dec qtybtn">-</span>
-                                                            <input className="text" value="1" />
-                                                            <span className="inc qtybtn">+</span></div>
-                                                    </div>
-                                                </td>
-                                                <td className="shoping__cart__total">
-                                                    $69.99
-                                    </td>
-                                                <td className="shoping__cart__item__close">
-                                                    <span className="icon_close"></span>
-                                                </td>
-                                            </tr>
+                                            <ShopDetailItem name="Vegetable’s Package" price="55.00" img={process.env.PUBLIC_URL + '/img/cart/cart-1.jpg'}></ShopDetailItem>
+                                            <ShopDetailItem name="Fresh Garden Vegetable" price="39.00" img={process.env.PUBLIC_URL + '/img/cart/cart-2.jpg'}></ShopDetailItem>
+                                            <ShopDetailItem name="Organic Bananas" price="69.00" img={process.env.PUBLIC_URL + '/img/cart/cart-3.jpg'}></ShopDetailItem>
                                         </tbody>
                                     </table>
                                 </div>

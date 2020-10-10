@@ -22,12 +22,12 @@ import "./css/nice-select.css"
 ReactDOM.render(
   <>
     <Header></Header>
-    <Router>
-      <div className="App">
+    <Router className="">
+      <>
         <Route path="/" exact component={Home} />
         <Route path="/shop" component={Shop} />
         <Route path="/shop-detail" component={ShopDetail} />
-      </div>
+      </>
     </Router>
     <Footer></Footer>
   </>,

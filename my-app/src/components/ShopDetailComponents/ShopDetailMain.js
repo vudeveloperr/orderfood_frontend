@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ShopDetailItem from './ShopDetailItem';
-
+import { connect } from 'react-redux';
 
 class ShopDetailMain extends React.Component {
     constructor(props) {
         super(props);
         var path = window.location.pathname;
-        if (path == "/shop-detail/information") {
+        if (path === "/shop-detail/information") {
             this.state = { activeindex: [{ nav: "nav-link" }, { nav: "nav-link active" }, { nav: "nav-link" }] }
         }
-        else if (path == "/shop-detail/reviews") {
+        else if (path === "/shop-detail/reviews") {
             this.state = { activeindex: [{ nav: "nav-link" }, { nav: "nav-link" }, { nav: "nav-link active" }] }
         }
         else {
@@ -23,11 +23,18 @@ class ShopDetailMain extends React.Component {
         var style = { nav: "nav-link active" };
         constant[i] = style;
         this.setState({ activeindex: constant });
+        console.log(this.props.cart);
         return false;
     }
 
+    componentWillReceiveProps(a, b) {
+        console.log(a, ':a;');
+        console.log(b, ':b;');
+    }
 
     render() {
+        console.log(this.props.cart, ': console.log(this.props.cart);');
+
         return (
             <Router>
                 <div className="product-details spad">
@@ -45,11 +52,22 @@ class ShopDetailMain extends React.Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <ShopDetailItem name="Vegetable’s Package" price="55.00" img={process.env.PUBLIC_URL + '/img/cart/cart-1.jpg'}></ShopDetailItem>
-                                            <ShopDetailItem name="Fresh Garden Vegetable" price="39.00" img={process.env.PUBLIC_URL + '/img/cart/cart-2.jpg'}></ShopDetailItem>
-                                            <ShopDetailItem name="Organic Bananas" price="69.00" img={process.env.PUBLIC_URL + '/img/cart/cart-3.jpg'}></ShopDetailItem>
+                                            <ShopDetailItem name="Vegetable’s Package" index="0" price="55.00"
+                                                img={process.env.PUBLIC_URL + '/img/cart/cart-1.jpg'}></ShopDetailItem>
+                                            <ShopDetailItem name="Fresh Garden Vegetable" index="1" price="39.00"
+                                                img={process.env.PUBLIC_URL + '/img/cart/cart-2.jpg'}></ShopDetailItem>
+                                            <ShopDetailItem name="Organic Bananas" index="2" price="69.00"
+                                                img={process.env.PUBLIC_URL + '/img/cart/cart-3.jpg'}></ShopDetailItem>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div className="shoping__checkout" key={this.props.cart}>
+                                    <h5>Cart Total</h5>
+                                    <ul>
+                                        {/* <li>Total <span>${this.props.total.length === 0 ? 0 : this.props.total.reduce((sum, num) => { return sum + num })}</span></li> */}
+                                        <li>Total <span>${JSON.stringify(this.props.cart)}</span></li>
+                                    </ul>
+                                    <a href="#" className="primary-btn">PROCEED TO CHECKOUT</a>
                                 </div>
                                 <div className="product__details__tab" >
                                     <ul className="nav nav-tabs">
@@ -87,8 +105,13 @@ class ShopDetailMain extends React.Component {
     }
 }
 
-export default ShopDetailMain;
-
+const mapStateToProps = (state) => {
+    console.log(state.cart.cart, ': state.cart.cart');
+    return {
+        cart: state.cart.cart,
+    }
+}
+export default connect(mapStateToProps)(ShopDetailMain)
 
 function decription() {
     return (<div className="product__details__tab__desc">

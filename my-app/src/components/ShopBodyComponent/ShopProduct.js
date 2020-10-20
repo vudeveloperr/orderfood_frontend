@@ -15,7 +15,7 @@ class ShopProduct extends React.Component {
                             <ShopSideBar></ShopSideBar>
                         </div>
                         <div className="col-lg-9 col-md-7">
-                            <div class="section-title product__discount__title">
+                            <div className="section-title product__discount__title">
                                 <h2>Sale Off</h2>
                             </div>
                             <SlideSaleOff></SlideSaleOff>

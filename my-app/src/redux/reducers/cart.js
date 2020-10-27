@@ -5,7 +5,7 @@ export default (state = {
 }, action) => {
     switch (action.type) {
         case INCREASE:{
-            var temp = state.cart;
+            var temp = [...state.cart];
             temp[action.data] = (!temp[action.data] ? 0 : temp[action.data]) + 1;
             return {
                 ...state,
@@ -13,7 +13,7 @@ export default (state = {
             };
         };
         case DECREASE:{
-            var temp = state.cart;
+            var temp = [...state.cart];
             temp[action.data] = (!temp[action.data] ? 0 : temp[action.data]) - 1;
             return{
                 ...state,

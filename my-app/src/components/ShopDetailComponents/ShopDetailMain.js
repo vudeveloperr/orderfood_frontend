@@ -27,11 +27,6 @@ class ShopDetailMain extends React.Component {
         return false;
     }
 
-    componentWillReceiveProps(a, b) {
-        console.log(a, ':a;');
-        console.log(b, ':b;');
-    }
-
     render() {
         console.log(this.props.cart, ': console.log(this.props.cart);');
 
@@ -64,8 +59,7 @@ class ShopDetailMain extends React.Component {
                                 <div className="shoping__checkout" key={this.props.cart}>
                                     <h5>Cart Total</h5>
                                     <ul>
-                                        {/* <li>Total <span>${this.props.total.length === 0 ? 0 : this.props.total.reduce((sum, num) => { return sum + num })}</span></li> */}
-                                        <li>Total <span>${JSON.stringify(this.props.cart)}</span></li>
+                                        <li>Total <span>${this.props.total.length === 0 ? 0 : this.props.total.reduce((sum, num) => { return sum + num || 0 })}</span></li>
                                     </ul>
                                     <a href="#" className="primary-btn">PROCEED TO CHECKOUT</a>
                                 </div>
@@ -106,9 +100,8 @@ class ShopDetailMain extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.cart.cart, ': state.cart.cart');
     return {
-        cart: state.cart.cart,
+        total: state.cart.cart,
     }
 }
 export default connect(mapStateToProps)(ShopDetailMain)

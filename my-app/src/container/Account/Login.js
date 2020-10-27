@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props) {
@@ -26,6 +25,7 @@ class Login extends React.Component {
             .then(response => {
                 window.dispatch({type: 'LOGGED', data: false});
                 localStorage.setItem('token',response.data.data.token);
+                console.log(this.props);
                 this.props.history.push("/");
             })
             .catch(function (error) {

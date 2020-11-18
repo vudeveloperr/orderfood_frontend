@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 
 class PanelPoster extends React.Component{
     render(){
@@ -12,7 +12,7 @@ class PanelPoster extends React.Component{
                     100% Organic
                     </h2>
                     <p>Free Pickup and Delivery Available</p>
-                    <a href="#" className="primary-btn">SHOP NOW</a>
+                    <Link href="#" className="primary-btn">SHOP NOW</Link>
                 </div>
             </div>
         );

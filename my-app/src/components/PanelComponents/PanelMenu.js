@@ -28,7 +28,7 @@ class PanelMenu extends React.Component {
                         <FontAwesomeIcon icon={faBars} color="white" />
                         <span> All departments</span>
                     </div>
-                    <ul style={{...{transition: 'opacity ease-in-out 1s 0s'}, ...this.state.style}}>
+                    <ul style={{...{transition: 'opacity ease-in-out 1s 0s'},...this.state.style}}>
                         {this.props.items}
                     </ul>
                 </div>

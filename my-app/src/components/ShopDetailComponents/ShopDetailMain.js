@@ -61,7 +61,7 @@ class ShopDetailMain extends React.Component {
                                     <ul>
                                         <li>Total <span>${this.props.total.length === 0 ? 0 : this.props.total.reduce((sum, num) => { return sum + num || 0 })}</span></li>
                                     </ul>
-                                    <a href="#" className="primary-btn">PROCEED TO CHECKOUT</a>
+                                    <a href="#" className="primary-btn">CHECKOUT</a>
                                 </div>
                                 <div className="product__details__tab" >
                                     <ul className="nav nav-tabs">

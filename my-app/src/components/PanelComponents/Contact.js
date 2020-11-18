@@ -7,7 +7,7 @@ class Contact extends React.Component{
         return(
             <div className="hero__search__phone">
                 <div className="hero__search__phone__icon">
-                    <FontAwesomeIcon icon={faPhone} color="green"/>  
+                    <FontAwesomeIcon icon={faPhone} color='#cf2127'/>  
                 </div>
                 <div className="hero__search__phone__text">
                     <h5>{this.props.number}</h5>

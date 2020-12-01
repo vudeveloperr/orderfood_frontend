@@ -3,11 +3,11 @@ import NaviItem from './NaviItem.js'
 import HeaderMenuDropDown from './HeaderMenuDropDown'
 import HeaderMenuDropDownItem from "./HeaderMenuDropDownItem"
 
-const pagesitem = <> 
-<HeaderMenuDropDownItem value="Shop Details" href="#"/>
-<HeaderMenuDropDownItem value="Shopping Cart" href="#"/>
-<HeaderMenuDropDownItem value="Check Out" href="#"/>
-<HeaderMenuDropDownItem value="Blog Details" href="#"/>
+const pagesitem = <>
+    <HeaderMenuDropDownItem value="Shop Details" href="#" />
+    <HeaderMenuDropDownItem value="Shopping Cart" href="#" />
+    <HeaderMenuDropDownItem value="Check Out" href="#" />
+    <HeaderMenuDropDownItem value="Blog Details" href="#" />
 </>
 
 
@@ -18,10 +18,10 @@ class NaviBar extends React.Component {
                 <nav className="header__menu">
                     <ul>
                         <NaviItem value="Home" href="/" />
-                        <NaviItem value="Shop" href="/shop" />
-                        <NaviItem value="Pages" href="#" dropdown={<HeaderMenuDropDown items={pagesitem}/>}/>
-                        <NaviItem value="Blog" href="#" />
-                        <NaviItem value="Contact" href="#" />
+                        <NaviItem value="Thực phẩm" href="/shop" />
+                        <NaviItem value="Pages" href="#" dropdown={<HeaderMenuDropDown items={pagesitem} />} />
+                        
+                        <NaviItem value="Đăng Nhập" href="/login" />
                     </ul>
                 </nav>
             </div>

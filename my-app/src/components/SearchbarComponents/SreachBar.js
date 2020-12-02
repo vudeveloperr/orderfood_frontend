@@ -1,7 +1,7 @@
 import React from 'react';
+import PanelSearchBar from './PanelSearchBar';
 import PanelMenu from '../PanelComponents/PanelMenu';
-import PanelMenuItem from '../PanelComponents/PanelMenuItem';
-import PanelSearchBar from '../PanelComponents/PanelSearchBar';
+import PanelMenuItem from './PanelMenuItem';
 
 var items = <>
     <PanelMenuItem href="#" value="Fresh Meat" />
@@ -17,22 +17,15 @@ var items = <>
     <PanelMenuItem href="#" value="Fresh Bananas" />
 </>
 
-
-class ShopMenu extends React.Component{
-    render(){
+class SreachBar extends React.Component {
+    render() {
         return (
-            <section className="hero hero-normal">
-                <div className="container">
-                    <div className="row">
-                        <PanelMenu visible={false} items={items}></PanelMenu>
-                        <div className="col-lg-9">
-                            <PanelSearchBar></PanelSearchBar>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <>
+                <PanelMenu items={items}></PanelMenu>
+                <PanelSearchBar></PanelSearchBar>
+            </>
         );
     }
 }
 
-export default ShopMenu;
+export default SreachBar;

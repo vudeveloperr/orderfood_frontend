@@ -5,12 +5,12 @@ import { faFacebook, faInstagram, faTwitter, faPinterest } from '@fortawesome/fr
 class Footer extends React.Component {
     render() {
         return (
-            <footer class="footer spad">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="footer__about">
-                                <div class="footer__about__logo">
+            <footer className="footer spad">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-3 col-md-6 col-sm-6">
+                            <div className="footer__about">
+                                <div className="footer__about__logo">
                                     <a href="./index.html"><img src="img/logo.png" alt=""></img></a>
                                 </div>
                                 <ul>
@@ -20,8 +20,8 @@ class Footer extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
-                            <div class="footer__widget">
+                        <div className="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                            <div className="footer__widget">
                                 <h6>Useful Links</h6>
                                 <ul>
                                     <li><a href="#">About Us</a></li>
@@ -41,15 +41,15 @@ class Footer extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="footer__widget">
+                        <div className="col-lg-4 col-md-12">
+                            <div className="footer__widget">
                                 <h6>Join Our Newsletter Now</h6>
                                 <p>Get E-mail updates about our latest shop and special offers.</p>
                                 <form action="#">
                                     <input type="text" placeholder="Enter your mail"></input>
-                                    <button type="submit" class="site-btn">Subscribe</button>
+                                    <button type="submit" className="site-btn">Subscribe</button>
                                 </form>
-                                <div class="footer__widget__social">
+                                <div className="footer__widget__social">
                                     <a href="#"> <FontAwesomeIcon icon={faFacebook} color="black"/></a>
                                     <a href="#"><FontAwesomeIcon icon={faInstagram} color="black" /></a>
                                     <a href="#"><FontAwesomeIcon icon={faTwitter} color="black" /></a>

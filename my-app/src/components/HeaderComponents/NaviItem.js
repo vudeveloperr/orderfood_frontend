@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'react-router-dom'
 
 
 class NaviItem extends React.Component{
@@ -11,5 +12,4 @@ class NaviItem extends React.Component{
         );
     }
 }
-
 export default NaviItem;

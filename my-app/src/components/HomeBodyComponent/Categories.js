@@ -81,7 +81,4 @@ class Categories extends React.Component {
 }
 
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Categories />, rootElement);
-
 export default Categories;

@@ -5,7 +5,7 @@ class HeaderLogo extends React.Component{
         return(
             <div className="col-lg-3">
                 <div className="header__logo">
-                    <a href="#">
+                    <a href="/">
                         <img src={process.env.PUBLIC_URL + '/img/logo.png'}></img>
                     </a>
                 </div>

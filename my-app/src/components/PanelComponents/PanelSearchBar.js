@@ -6,7 +6,7 @@ class PanelSearchBar extends React.Component {
         this.state = { style: { opacity: 0, height: '0px', padding: '0px', overflow: 'hidden' }, categories: 'All Categories' };
     }
     toggle() {
-        if (this.state.style.opacity != 0) {
+        if (this.state.style.opacity !== 0) {
             this.setState({ style: { opacity: 0, height: '0px', padding: '0px', overflow: 'hidden' } });
         }
         else {
@@ -32,7 +32,7 @@ class PanelSearchBar extends React.Component {
                         </form>
                     </div>
                     <div className="newul">
-                        <ul style={{ ...{ transition: 'opacity ease-in-out 1s 0s' }, ...this.state.style }}>
+                        <ul style={{ ...{ transition: 'opacity ease-in-out 1s 0s' , zIndex:1}, ...this.state.style }}>
                             <li><a onClick={(event) => { this.changeCategories(event) }}>All Categories</a></li>
                             <li><a onClick={(event) => { this.changeCategories(event) }}>Fresh Meat</a></li>
                             <li><a onClick={(event) => { this.changeCategories(event) }}>Vegetables</a></li>

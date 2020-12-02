@@ -1,24 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/HeaderComponents/Header';
-import Footer from './components/FooterComponents/Footer';
-
-import Home from './container/Home/Home';
-import Shop from './container/Shop/Shop';
-import Login from './container/Account/Login';
-import ShopDetail from './container/ShopDetail/ShopDetail';
-
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import "./css/style.css";
-import "./css/elegant-icons.css";
-import "./css/new.css";
-import "./sass/_header.scss";
-import "./sass/_responsive.scss";
-import "./css/bootstrap.min.css";
-import "./css/owl.carousel.min.css";
-import "./css/login.css";
-import "./css/nice-select.css"
 
 
 ReactDOM.render(

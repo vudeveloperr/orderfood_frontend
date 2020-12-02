@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 
 class Login extends React.Component {
     state = {
@@ -19,7 +20,7 @@ class Login extends React.Component {
     }
     render() {
         return (
-            <div class="bg">
+            <div className="bg">
                 <div className="container">
                     <div class="col-md-3 col-md-offset-4">
                         <h3>Đăng Nhập</h3>

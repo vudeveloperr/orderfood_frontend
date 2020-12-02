@@ -2,6 +2,7 @@ import React from 'react'
 import NaviBar from './NaviBar';
 import HeaderLogo from './HeaderLogo';
 import HeaderCart from "./HeaderCart";
+import { connect } from 'react-redux';
 
 
 class Header extends React.Component {
@@ -11,11 +12,16 @@ class Header extends React.Component {
                 <div className="row">
                     <HeaderLogo></HeaderLogo>
                     <NaviBar></NaviBar>
-                    <HeaderCart bag="3" heart="4" price="15000" login={true}></HeaderCart>
+                    <HeaderCart bag="3" heart="4" price="15000" login={this.props.login}></HeaderCart>
                 </div>
             </div>
         );
     }
 }
 
-export default Header;
+function mapStateToProps(state) {
+    return {
+      login: state.login.login,
+    }
+  }
+  export default connect(mapStateToProps)(Header)

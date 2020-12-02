@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter, faPinterest } from '@fortawesome/free-brands-svg-icons';
+import {Link} from 'react-router-dom'
+
 
 class Footer extends React.Component {
     render() {
@@ -11,7 +13,7 @@ class Footer extends React.Component {
                         <div className="col-lg-3 col-md-6 col-sm-6">
                             <div className="footer__about">
                                 <div className="footer__about__logo">
-                                    <a href="./index.html"><img src="img/logo.png" alt=""></img></a>
+                                    <Link to="./index.html"><img src="img/logo.png" alt=""></img></Link>
                                 </div>
                                 <ul>
                                     <li>Address: 60-49 Road 11378 New York</li>

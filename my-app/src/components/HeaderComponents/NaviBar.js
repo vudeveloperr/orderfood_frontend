@@ -1,7 +1,6 @@
 import React from 'react';
-import NaviItem from './NaviItem.js'
-import HeaderMenuDropDown from './HeaderMenuDropDown'
-import HeaderMenuDropDownItem from "./HeaderMenuDropDownItem"
+import HeaderMenuDropDown from './HeaderMenuDropDown';
+import {Link} from 'react-router-dom';
 
 const pagesitem = <>
     <HeaderMenuDropDownItem value="Shop Details" href="#" />
@@ -25,6 +24,18 @@ class NaviBar extends React.Component {
                     </ul>
                 </nav>
             </div>
+        );
+    }
+}
+
+
+class NaviItem extends React.Component{
+    render(){
+        return(
+            <li>
+                <Link to={this.props.href}> {this.props.value}</Link>
+                {this.props.dropdown}
+            </li>
         );
     }
 }

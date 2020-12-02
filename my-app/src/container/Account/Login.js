@@ -1,5 +1,4 @@
-import React from 'react'
-import axios from 'axios';
+import React from 'react';
 
 class Login extends React.Component {
     state = {

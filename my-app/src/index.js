@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Header from './components/HeaderComponents/Header';
 import Footer from './components/FooterComponents/Footer';
@@ -11,7 +10,7 @@ import ShopDetail from './container/ShopDetail/ShopDetail';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 import allReducers from './redux/reducers/index';
 

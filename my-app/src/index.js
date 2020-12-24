@@ -36,18 +36,6 @@ const store = createStore(allReducers,composeEnhancers());
 window.dispatch = store.dispatch;
 
 ReactDOM.render(
-<<<<<<< HEAD
-  <>
-    <Header></Header>
-    <Router className="">
-      <>
-        <Route path="/" exact component={Home} />
-        <Route path="/shop" component={Shop} />
-        <Route path="/login" component={Login}/>
-        <Route path="/shop-detail" component={ShopDetail} />
-        <Route path="/signup" component={Signup} />
-      </>
-=======
   <Provider store={store}>
     <Router>
       <Header></Header>
@@ -58,7 +46,6 @@ ReactDOM.render(
       <Route path="/check-out" component={Checkout}/>
       <Route path="/history" component={History}/>
       <Footer></Footer>
->>>>>>> sua-fe
     </Router>
   </Provider>,
   document.getElementById('root')

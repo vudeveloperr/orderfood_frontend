@@ -10,7 +10,7 @@ class ShopItemFilter extends React.Component {
     }
     
     openSelector(){
-        if(this.state.className == 'nice-select'){
+        if(this.state.className === 'nice-select'){
         this.setState({className:'nice-select open'})
         }
         else
@@ -31,7 +31,7 @@ class ShopItemFilter extends React.Component {
                     <div className="col-lg-4 col-md-5">
                         <div className="filter__sort">
                             <span>Sort By</span>
-                            <div className={this.state.className} onClick={()=>{this.openSelector()}} tabindex="0"><span className="current">{this.state.sort}</span>
+                            <div className={this.state.className} onClick={()=>{this.openSelector()}} tabIndex="0"><span className="current">{this.state.sort}</span>
                                 <ul className="list">
                                     {this.state.numbers.map((number,index) => 
                     <li key={index}  data-value={index} onClick={()=>{this.click(index)}} class={number.class}>{number.value}</li>)}
@@ -41,7 +41,7 @@ class ShopItemFilter extends React.Component {
                     </div>
                     <div className="col-lg-4 col-md-4">
                         <div className="filter__found">
-                            <h6><span>16</span> Products found</h6>
+                                    <h6><span>{this.props.count}</span> Products found</h6>
                         </div>
                     </div>
                 </div>

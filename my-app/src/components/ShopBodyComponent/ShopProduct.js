@@ -4,8 +4,33 @@ import SlideSaleOff from "./SlideSaleOff"
 
 import ShopItemFilter from "./ShopItemFilter"
 import ShopProductItem from "./ShopProductItem"
+import {Host} from '../../consts';
+import { connect } from 'react-redux';
+import axios from 'axios';
+
 
 class ShopProduct extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    componentDidMount(){
+        var config = {
+            method: 'GET',
+            url: Host +'sign-in',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        };
+
+        axios(config)
+            .then(response => {
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     render() {
         return (
             <section className="product spad">
@@ -15,19 +40,16 @@ class ShopProduct extends React.Component {
                             <ShopSideBar></ShopSideBar>
                         </div>
                         <div className="col-lg-9 col-md-7">
-                            <div class="section-title product__discount__title">
-                                <h2>Sale Off</h2>
+                            <div className="section-title product__discount__title">
+                                <h2>Cửa hàng</h2>
                             </div>
-                            <SlideSaleOff></SlideSaleOff>
-                            <ShopItemFilter></ShopItemFilter>
+                            {/* <SlideSaleOff></SlideSaleOff> */}
+                            <ShopItemFilter count={this.props.shop.length}></ShopItemFilter>
                             <div className="row">
-                                <ShopProductItem></ShopProductItem>
-                                <ShopProductItem></ShopProductItem>
-                                <ShopProductItem></ShopProductItem>
-                                <ShopProductItem></ShopProductItem>
-                                <ShopProductItem></ShopProductItem>
-                                <ShopProductItem></ShopProductItem>
-                                <ShopProductItem></ShopProductItem>
+                                {this.props.shop.map((item,index)=>{
+                                    return <ShopProductItem/>
+                                })}
+
                             </div>
                         </div>
                     </div>
@@ -37,4 +59,9 @@ class ShopProduct extends React.Component {
     }
 }
 
-export default ShopProduct;
+const mapStateToProps = (state) => {
+    return {
+        shop: state.shop.shop,
+    }
+}
+export default connect(mapStateToProps)(ShopProduct)

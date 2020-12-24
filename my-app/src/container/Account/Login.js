@@ -1,55 +1,70 @@
 import React from 'react'
+import axios from 'axios';
 
 class Login extends React.Component {
-    state = {
-        username: '',
-        password: ''
+    constructor(props) {
+        super(props);
+        this.state = { username: "", password: "" };
     }
+    login() {
+        var data = '{\n    "username":"meoyeu123",\n    "password":"meoyeu123"\n}';
 
-    handleInputChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
+        var config = {
+            method: 'POST',
+            url: 'http://127.0.0.1:5000/sign-in',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                
 
-        this.setState({ [name]: value });
+            },
+            data: data
+        };
+
+        axios(config)
+            .then(response => {
+                window.dispatch({type: 'LOGGED', data: false});
+                localStorage.setItem('token',response.data.data.token);
+                console.log(this.props);
+                this.props.history.push("/");
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
-
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.onLogin(this.state.username, this.state.password);
+    onUsernameChange(e) {
+        this.setState({ username: e.target.value })
+    }
+    onPasswordChange(e) {
+        this.setState({ password: e.target.value })
     }
     render() {
         return (
-            <div class="bg">
+            <div className="bg">
                 <div className="container">
-                    <div class="col-md-3 col-md-offset-4">
-                        <h3>Đăng Nhập</h3>
-                        <form onSubmit = { this.handleSubmit}>
-                            <div class="login-form">
-                                <div class="form-group">
-                                    <label class="label2" >Tên Tài Khoản</label>
-                                    <input onChange={this.handleInputChange} name="username" class="form-control" placeholder="Điền Tên Tài Khoản" id="login-name" type="text" />
-                                </div>
-                                <div class="form-group">
-                                    <label class="label1">Mật Khẩu</label>
-                                    <input onChange={this.handleInputChange} name="password" class="form-control" placeholder="Điền Mật Khẩu" id="login-pass" type="password" />
-                                </div>
-                                <div className="form-group">
-                                    <div className="custom-control custom-checkbox">
-                                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                                        <label className="custom-control-label" htmlFor="customCheck1">Giữ tôi luôn đăng nhập </label>
-                                    </div>
-                                </div>
-                                <button type="submit" className="btn btn-danger btn-block">Đăng Nhập</button>
-
-                                <br /> <a href="#"><small>Quên Mật Khẩu</small></a>
-                                <br /> <a href="#"><small>Đăng nhập bằng mã dùng một lần</small></a>
-                                <br />
-
-                                <div>
-                                    <small>Không có tài khoản?</small> <a href="/signup"><small>Tạo tài khoản</small></a>
-                                </div>
+                    <div className="col-md-3 col-md-offset-4">
+                        <span className="text">Login</span>
+                        <div className="login-form">
+                            <div className="form-group">
+                                <input className="form-control" placeholder="Account" type="text" onChange={(e) => { this.onUsernameChange(e) }}></input>
                             </div>
-                        </form>
+                            <div className="form-group">
+                                <input className="form-control" placeholder="Password" type="password" onChange={(e) => { this.onPasswordChange(e) }}></input>
+                            </div>
+                            <div className="checkbox">
+                                <label><input type="checkbox" /> Giữ tôi luôn đăng nhập </label>
+                            </div>
+                            <br /> <a className="btn btn-info" onClick={() => { this.login() }}>Đăng nhập</a>
+                            <br />
+                            <br /> <a href="#"><small>Quên mật khẩu</small></a>
+                            <br /> <a href="#"><small>Đăng nhập bằng mã dùng một lần</small></a>
+                            <br />
+                            <br />
+                            <br />
+                            <div>
+                                <small>Không có tài khoản?</small> <a href="#"><small>Tạo tài khoản</small></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

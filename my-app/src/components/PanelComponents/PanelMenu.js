@@ -26,9 +26,9 @@ class PanelMenu extends React.Component {
                 <div className="hero__categories">
                     <div className="hero__categories__all" onClick={() => {this.toggleMenu()}}>
                         <FontAwesomeIcon icon={faBars} color="white" />
-                        <span> All departments</span>
+                        <span>Danh sách</span>
                     </div>
-                    <ul style={{...{transition: 'opacity ease-in-out 1s 0s'}, ...this.state.style}}>
+                    <ul style={{...{transition: 'opacity ease-in-out 1s 0s'},...this.state.style}}>
                         {this.props.items}
                     </ul>
                 </div>

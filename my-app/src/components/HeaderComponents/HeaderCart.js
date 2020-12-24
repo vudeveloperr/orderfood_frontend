@@ -1,10 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import {Link} from 'react-router-dom';
+
 class HeaderCart extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props.login)
     }
     render() {
         return (
@@ -39,7 +40,7 @@ function Login() {
     return (
         <div className="header__cart">
             <div className="header__cart__price">
-                <a className="login" href="/login"> Login</a>
+                <Link className="login" to="/login"> Đăng nhập</Link>
             </div>
         </div>
     );

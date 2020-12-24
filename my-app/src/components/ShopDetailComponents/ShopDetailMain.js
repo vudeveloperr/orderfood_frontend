@@ -1,33 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 import ShopDetailItem from './ShopDetailItem';
+import { connect } from 'react-redux';
 
+import { Form, Button, Input } from 'antd';
+
+const { TextArea } = Input;
 
 class ShopDetailMain extends React.Component {
     constructor(props) {
         super(props);
-        var path = window.location.pathname;
-        if (path == "/shop-detail/information") {
-            this.state = { activeindex: [{ nav: "nav-link" }, { nav: "nav-link active" }, { nav: "nav-link" }] }
-        }
-        else if (path == "/shop-detail/reviews") {
-            this.state = { activeindex: [{ nav: "nav-link" }, { nav: "nav-link" }, { nav: "nav-link active" }] }
-        }
-        else {
-            this.state = { activeindex: [{ nav: "nav-link active" }, { nav: "nav-link" }, { nav: "nav-link" }] }
-        }
+        this.state = { img: 'https://via.placeholder.com/150', qty: 1 };
+        this.state.item = {};
+        this.state.comments = [];
+        this.formRef = React.createRef();
     }
-
-    click(i) {
-        var constant = [{ nav: "nav-link" }, { nav: "nav-link" }, { nav: "nav-link" }];
-        var style = { nav: "nav-link active" };
-        constant[i] = style;
-        this.setState({ activeindex: constant });
-        return false;
-    }
-
 
     render() {
+        console.log(this.props.cart, ': console.log(this.props.cart);');
+
         return (
             <Router>
                 <div className="product-details spad">
@@ -45,37 +36,70 @@ class ShopDetailMain extends React.Component {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <ShopDetailItem name="Vegetable’s Package" price="55.00" img={process.env.PUBLIC_URL + '/img/cart/cart-1.jpg'}></ShopDetailItem>
-                                            <ShopDetailItem name="Fresh Garden Vegetable" price="39.00" img={process.env.PUBLIC_URL + '/img/cart/cart-2.jpg'}></ShopDetailItem>
-                                            <ShopDetailItem name="Organic Bananas" price="69.00" img={process.env.PUBLIC_URL + '/img/cart/cart-3.jpg'}></ShopDetailItem>
+                                            {this.props.shopItem.map((item, index) => {
+                                                return <ShopDetailItem name= {item.name} index= {index} price={item.sale_price}
+                                                img={process.env.PUBLIC_URL + item.image} id={item.id}
+                                                />})}    
                                         </tbody>
                                     </table>
                                 </div>
+                                <div className="shoping__checkout" key={this.props.cart}>
+                                    <h5>Cart Total</h5>
+                                    <ul>
+                                        <li>Total <span>${this.props.total.length === 0 ? 0 : this.props.total.reduce((sum, num) => { return sum + num || 0 })}</span></li>
+                                    </ul>
+                                    <a href="#" className="primary-btn">Thanh toán</a>
+                                </div>
                                 <div className="product__details__tab" >
-                                    <ul className="nav nav-tabs">
-                                        <li className="nav-item">
-                                            <Link className={this.state.activeindex[0].nav} onClick={() => { this.click(0) }} to={'/shop-detail/'}>
-                                                Decription
-                                        </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link className={this.state.activeindex[1].nav} onClick={() => { this.click(1) }} to={'/shop-detail/information'}>
-                                                Infomation
-                                        </Link>
-                                        </li>
-                                        <li className="nav-item">
-                                            <Link className={this.state.activeindex[2].nav} onClick={() => { this.click(2) }} to={'/shop-detail/reviews'}>
-                                                Reviews
-                                        </Link>
+                                <ul className="nav nav-tabs">
+                                        <li className="nav-item active">
+                                            Nhận xét
                                         </li>
                                     </ul>
+                                    <Form
+                                        name="basic"
+                                        onFinish={this.onFinish}
+                                        ref={this.formRef}
+                                    >
+                                        <Form.Item
+                                            name="noidung"
+                                        >
+                                            <TextArea
+                                                placeholder="Nhận xét tại đây"
+                                                autoSize={{ minRows: 3, maxRows: 5 }}
+                                            />
+                                        </Form.Item>
+                                        <Form.Item
+                                            style={{ float: 'right' }}
+                                        >
+                                            <Button htmlType="submit">Nhận xét</Button>
+                                        </Form.Item>
+                                    </Form>
                                     <div className="tab-content">
+                                        <div className="product__details__tab__desc">
+                                            <div className="container">
+                                                {
+                                                    this.state.comments.map((item) => {
+                                                        return (
+                                                            <div class="row" style={{margin:'10px auto 0px auto', borderBottom: '1px solid #dee2e6', width:'100%' }}>
+                                                                <div className="media">
+                                                                    <div className="media-left">
+                                                                        <img src="/user.png" class="media-object" style={{ width: '40px' }} />
+                                                                    </div>
+                                                                    <div className="media-body" style={{ marginLeft: '20px' }}>
+                                                                        <h4 className="media-heading title">{item.ten}</h4>
+                                                                        <p className="komen">
+                                                                            {item.noidung}<br />
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        );
+                                                    })
+                                                }
 
-                                        <Switch>
-                                            <Route exact path="/shop-detail" component={decription} />
-                                            <Route path="/shop-detail/information" render={infomation} />
-                                            <Route path="/shop-detail/reviews" render={review} />
-                                        </Switch>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -87,8 +111,13 @@ class ShopDetailMain extends React.Component {
     }
 }
 
-export default ShopDetailMain;
-
+const mapStateToProps = (state) => {
+    return {
+        shopItem: state.shop.shopItem,
+        total: state.cart.cart,
+    }
+}
+export default connect(mapStateToProps)(ShopDetailMain)
 
 function decription() {
     return (<div className="product__details__tab__desc">

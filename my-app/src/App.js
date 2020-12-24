@@ -8,7 +8,7 @@ import Home from './container/Home/Home';
 import Shop from './container/Shop/Shop';
 import Login from './container/Account/Login';
 import ShopDetail from './container/ShopDetail/ShopDetail';
-import Signup from './container/Account/Signup';
+
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -34,7 +34,7 @@ export class App extends Component {
                         <Route path="/shop" component={Shop} />
                         <Route path="/login" component={Login} />
                         <Route path="/shop-detail" component={ShopDetail} />
-                        <Route path="/signup" component={Signup} />
+                        
                     </Switch>
                 </BrowserRouter>
                 <Footer></Footer>

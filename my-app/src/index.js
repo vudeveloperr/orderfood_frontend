@@ -9,8 +9,7 @@ import Login from './container/Account/Login';
 import ShopDetail from './container/ShopDetail/ShopDetail';
 import Checkout from './container/Checkout/Checkout';
 import History from './container/History/History';
-
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Signup from './container/Account/Signup';
 
 import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux';
@@ -45,6 +44,7 @@ ReactDOM.render(
       <Route path="/shop-detail" component={ShopDetail} />
       <Route path="/check-out" component={Checkout}/>
       <Route path="/history" component={History}/>
+      <Route path="/signup" component={Signup} />
       <Footer></Footer>
     </Router>
   </Provider>,

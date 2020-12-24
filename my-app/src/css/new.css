@@ -39,3 +39,22 @@
     color: #7fad39;
 }
   
+
+/* style for slide  */
+.AppSl {
+    font-family: sans-serif;
+}
+
+.rec rec-dot rec rec-dot_active {
+    background-color: #e9351d;
+    box-shadow: 0 0 1px 3px #e9351d;
+}
+
+
+.slick-prev:before, .slick-next:before {
+    color: #e9351d;
+}
+
+.detail-slider{
+    padding: 5px 5px;
+}

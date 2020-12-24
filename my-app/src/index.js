@@ -6,6 +6,8 @@ import Home from './container/Home/Home';
 import Shop from './container/Shop/Shop';
 import Login from './container/Account/Login';
 import ShopDetail from './container/ShopDetail/ShopDetail';
+import Checkout from './container/Checkout/Checkout';
+import History from './container/History/History';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -13,6 +15,7 @@ import { Provider } from 'react-redux'
 import { createStore, compose } from 'redux';
 import allReducers from './redux/reducers/index';
 
+import 'antd/dist/antd.css';
 import "./css/style.css";
 import "./css/elegant-icons.css";
 import "./css/new.css";
@@ -39,6 +42,8 @@ ReactDOM.render(
       <Route path="/shop" component={Shop} />
       <Route path="/login" component={Login} />
       <Route path="/shop-detail" component={ShopDetail} />
+      <Route path="/check-out" component={Checkout}/>
+      <Route path="/history" component={History}/>
       <Footer></Footer>
     </Router>
   </Provider>,

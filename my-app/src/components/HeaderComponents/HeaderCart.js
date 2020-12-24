@@ -40,7 +40,7 @@ function Login() {
     return (
         <div className="header__cart">
             <div className="header__cart__price">
-                <Link className="login" to="/login"> Login</Link>
+                <Link className="login" to="/login"> Đăng nhập</Link>
             </div>
         </div>
     );

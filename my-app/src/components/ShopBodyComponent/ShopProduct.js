@@ -1,35 +1,36 @@
 import React from 'react';
 import ShopSideBar from "./ShopSideBar"
-import SlideSaleOff from "./SlideSaleOff"
+
+import { withRouter } from 'react-router-dom';
 
 import ShopItemFilter from "./ShopItemFilter"
 import ShopProductItem from "./ShopProductItem"
-import {Host} from '../../consts';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { STAT_URL } from '../../consts'
 
 class ShopProduct extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
+        this.state = { data: [] }
     }
-    componentDidMount(){
-        var config = {
-            method: 'GET',
-            url: Host +'sign-in',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-            },
-        };
-
-        axios(config)
-            .then(response => {
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+    componentDidMount() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const cate = urlParams.get('cate');
+        const name = urlParams.get('name');
+        console.log('qs',cate,name)
+        // if (!this.props.match.params.id) {
+        //     if (!this.props.match.params.name) {
+        //         axios.get(`${STAT_URL}/foods`).then((respone) => this.setData(respone)).catch(console.log)
+        //     }
+        //     else {
+        //         axios.get(`${STAT_URL}/foods/search?name=${this.props.match.params.name}`).then((respone) => this.setData(respone)).catch(console.log)
+        //     }
+        // }
+        // else {
+        //     axios.get(`${STAT_URL}/foods?idtype=${this.props.match.params.id}`).then((respone) => this.setData(respone)).catch(console.log)
+        // }
     }
     render() {
         return (
@@ -43,11 +44,10 @@ class ShopProduct extends React.Component {
                             <div className="section-title product__discount__title">
                                 <h2>Cửa hàng</h2>
                             </div>
-                            {/* <SlideSaleOff></SlideSaleOff> */}
                             <ShopItemFilter count={this.props.shop.length}></ShopItemFilter>
                             <div className="row">
-                                {this.props.shop.map((item,index)=>{
-                                    return <ShopProductItem/>
+                                {this.props.shop.map((item, index) => {
+                                    return <ShopProductItem />
                                 })}
 
                             </div>
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
         shop: state.shop.shop,
     }
 }
-export default connect(mapStateToProps)(ShopProduct)
+export default connect(mapStateToProps)(withRouter(ShopProduct))

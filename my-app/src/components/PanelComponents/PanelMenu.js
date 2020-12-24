@@ -1,6 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+
+import { Link } from 'react-router-dom';
+
+import axios from 'axios';
+import {STAT_URL} from '../../consts';
 class PanelMenu extends React.Component {
     constructor(props){
         super(props);
@@ -10,6 +15,7 @@ class PanelMenu extends React.Component {
         else{
         this.state = {style : {opacity:1, display:'block'}};
         }
+        this.state.data = [];
     }
     toggleMenu(){
         if(this.state.style.opacity !== 0){
@@ -20,6 +26,20 @@ class PanelMenu extends React.Component {
         }
        
     }
+
+    componentDidMount(){
+        axios.get(`${STAT_URL}/v1/food/cate`)
+        .then(
+            (response) => {
+                if(response.data.error.code === 200){
+                    console.log(response)
+                    this.setState({data: response.data.data});
+                }
+            }
+        )
+        .catch()
+    }
+
     render() {
         return (
             <div className="col-lg-3">
@@ -29,7 +49,11 @@ class PanelMenu extends React.Component {
                         <span>Danh sách</span>
                     </div>
                     <ul style={{...{transition: 'opacity ease-in-out 1s 0s'},...this.state.style}}>
-                        {this.props.items}
+                        {this.state.data.map((item) => (
+                            <li>
+                                <Link to={`//${item.id}`}>{item.name}</Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>

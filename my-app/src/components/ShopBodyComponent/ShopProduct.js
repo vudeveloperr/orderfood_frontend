@@ -16,10 +16,6 @@ class ShopProduct extends React.Component {
         this.state = { data: [] }
     }
     componentDidMount() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const cate = urlParams.get('cate');
-        const name = urlParams.get('name');
-        console.log('qs',cate,name)
         // if (!this.props.match.params.id) {
         //     if (!this.props.match.params.name) {
         //         axios.get(`${STAT_URL}/foods`).then((respone) => this.setData(respone)).catch(console.log)

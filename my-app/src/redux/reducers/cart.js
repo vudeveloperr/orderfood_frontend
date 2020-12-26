@@ -1,4 +1,7 @@
-import { CHANGE} from '../actions/cart/action_types';
+import { 
+    CHANGE,
+    CLEAR,
+} from '../actions/cart/action_types';
 
 export default (state = {
     cart: [],
@@ -6,12 +9,18 @@ export default (state = {
     switch (action.type) {
         case CHANGE:{
             var temp = [...state.cart];
-            temp[action.data.index] = action.data.total;
+            temp[action.data.index] = {id_food: action.data.id,name:action.data.name, quantity: action.data.quantity, total:action.data.total};
             return {
                 ...state,
                 cart: temp,
             };
         };
+        case CLEAR:{
+            return{
+                ...state,
+                cart: [],
+            }
+        }
         default:
             return {
                 ...state,

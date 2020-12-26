@@ -1,4 +1,4 @@
-import {CHANGE} from './action_types';
+import {CHANGE, CLEAR} from './action_types';
 
 export default {
     change: (data) => ({
@@ -7,4 +7,8 @@ export default {
             data,
         },
     }),
+    clear: (data) => ({
+        type:CLEAR,
+        data: data,
+    })
 };

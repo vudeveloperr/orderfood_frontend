@@ -10,10 +10,10 @@ class NaviBar extends React.Component {
                 <nav className="header__menu">
                     <ul>
                         <li>
-                            <Link to="">Trang chủ</Link>
+                            <Link to="/">Trang chủ</Link>
                         </li>
                         <li>
-                            <Link to="">Cửa hàng</Link>
+                            <Link to="/shop">Cửa hàng</Link>
                         </li>
                         {this.props.login === true ? 
                         <li>

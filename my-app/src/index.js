@@ -38,11 +38,11 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Header></Header>
-      <Route path="/" exact component={Home} />
+      <Route exact path="/" component={Home} />
       <Route path="/shop" component={Shop} />
       <Route path="/food" component={Food} />
       <Route path="/login" component={Login} />
-      <Route path="/shop-detail" component={ShopDetail} />
+      <Route path="/shop-detail/:id" component={ShopDetail} />
       <Route path="/check-out" component={Checkout}/>
       <Route path="/history" component={History}/>
       <Footer></Footer>

@@ -4,7 +4,7 @@ import React from 'react';
 class ShopDetailItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { quantity: 0 }
+        this.state = { quantity: this.props.initValue }
     }
 
     componentDidMount() {
@@ -13,13 +13,13 @@ class ShopDetailItem extends React.Component {
 
     increase() {
         this.setState({ quantity: this.state.quantity + 1 }, () => {
-            window.dispatch({ type: 'CHANGE', data: { index: parseInt(this.props.index), total: this.state.quantity * this.props.price } });
+            window.dispatch({ type: 'CHANGE', data: { index: parseInt(this.props.index),id: this.props.id,name: this.props.name, quantity: this.state.quantity, total: this.state.quantity * this.props.price } });
         });
     }
     decrease() {
         if (this.state.quantity > 0) {
             this.setState({ quantity: this.state.quantity - 1 }, () => {
-                window.dispatch({ type: 'CHANGE', data: { index: parseInt(this.props.index), total: this.state.quantity * this.props.price } });
+                window.dispatch({ type: 'CHANGE', data: { index: parseInt(this.props.index), id: this.props.id,quantity: this.state.quantity, total: this.state.quantity * this.props.price } });
             });
 
         }
@@ -29,11 +29,11 @@ class ShopDetailItem extends React.Component {
         return (
             <tr>
                 <td className="shoping__cart__item">
-                    <img src={this.props.img} alt="" />
+                    <img style={{width:'225px', height:'225px'}} src={this.props.img} alt="" />
                     <h5>{this.props.name}</h5>
                 </td>
                 <td className="shoping__cart__price">
-                    ${this.props.price || 0}
+                    {this.props.price || 0}đ
                 </td>
                 <td className="shoping__cart__quantity">
                     <div className="quantity">
@@ -44,7 +44,7 @@ class ShopDetailItem extends React.Component {
                     </div>
                 </td>
                 <td className="shoping__cart__total">
-                    ${this.state.quantity * this.props.price}
+                    {this.state.quantity * this.props.price}đ
                 </td>
             </tr>
         );

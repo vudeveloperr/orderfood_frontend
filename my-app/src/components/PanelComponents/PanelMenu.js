@@ -46,12 +46,12 @@ class PanelMenu extends React.Component {
                 <div className="hero__categories">
                     <div className="hero__categories__all" onClick={() => {this.toggleMenu()}}>
                         <FontAwesomeIcon icon={faBars} color="white" />
-                        <span>Danh sách</span>
+                        <span> Danh sách</span>
                     </div>
                     <ul style={{...{transition: 'opacity ease-in-out 1s 0s'},...this.state.style}}>
                         {this.state.data.map((item) => (
                             <li>
-                                <Link to={`//${item.id}`}>{item.name}</Link>
+                                <Link to={`/food?cate=${item.id}`}>{item.name}</Link>
                             </li>
                         ))}
                     </ul>

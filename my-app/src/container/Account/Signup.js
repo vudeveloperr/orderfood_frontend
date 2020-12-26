@@ -1,5 +1,7 @@
 import React from 'react'
 import 'antd/dist/antd.css';
+import axios from 'axios';
+import { BASE_URL } from '../../consts';
 import { Form, Input, Button ,Upload} from 'antd';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -16,6 +18,7 @@ const tailLayout = {
         span: 16,
     },
 };
+
 class Signup extends React.Component {
     constructor(props) {
         super(props);
@@ -28,8 +31,8 @@ class Signup extends React.Component {
             (response) => {
               if(response.data.error.code === 200){
                 window.dispatch({type:'SET_TOKEN', data:response.data.data})
-                window.dispatch({type: 'LOGIN', data:true})
-                this.props.history.push('/')
+                // window.dispatch({type: 'LOGIN', data:true})
+                this.props.history.push('/login')
               }
               else{
                 alert('Đăng nhập không thành công');

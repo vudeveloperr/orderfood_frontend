@@ -2,7 +2,7 @@ import React from 'react'
 import 'antd/dist/antd.css';
 import axios from 'axios';
 import { BASE_URL } from '../../consts';
-import { Form, Input, Button ,Upload} from 'antd';
+import { Form, Input, Button, Upload } from 'antd';
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { UploadOutlined } from '@ant-design/icons';
@@ -22,29 +22,30 @@ const tailLayout = {
 class Signup extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { username: "", password: "" };
-      }
-    
-      login(values){
-        axios.post(`${BASE_URL}/v1/login`, values)
-          .then(
-            (response) => {
-              if(response.data.error.code === 200){
-                window.dispatch({type:'SET_TOKEN', data:response.data.data})
-                // window.dispatch({type: 'LOGIN', data:true})
-                this.props.history.push('/login')
-              }
-              else{
-                alert('Đăng nhập không thành công');
-              }
-            }
-          )
-          .catch(console.log)
-      }
-    
-      onFinish = (values) => {
-        this.login(values);
-      }
+        // this.state = { username: "", password: "" };
+        this.state = { data: [], visible: false, visible1: false };
+        this.formRef = React.createRef();
+    }
+
+    onFinish = (values) => {
+        console.log(values);
+        values.type = '3';
+        console.log('POST')
+        console.log(values)
+        axios.post(`${BASE_URL}/v1/login/signup`, values)
+            .then((response) => {
+                this.setState({ visible: false }, () => {
+                    if (response.data.error.code === 200) {
+                        this.props.history.push('/login')
+                    }
+                    else {
+                        alert('Đăng kí không thành công');
+                    }
+                })
+            })
+            .catch(console.log)
+    }
+
     render() {
         return (
             <div className="bg">
@@ -66,7 +67,7 @@ class Signup extends React.Component {
                                     },
                                 ]}
                             >
-                                <Input placeholder="Username" />
+                                <Input placeholder="Tên Đăng Nhập" />
                             </Form.Item>
 
                             <Form.Item
@@ -78,19 +79,7 @@ class Signup extends React.Component {
                                     },
                                 ]}
                             >
-                                <Input.Password placeholder="Password" />
-                            </Form.Item>
-
-                            <Form.Item
-                                name="address"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input your address!',
-                                    },
-                                ]}
-                            >
-                                <Input placeholder="address" />
+                                <Input.Password placeholder="Mật Khẩu" />
                             </Form.Item>
 
                             <Form.Item
@@ -102,7 +91,7 @@ class Signup extends React.Component {
                                     },
                                 ]}
                             >
-                                <Input placeholder="email" />
+                                <Input placeholder="Địa Chỉ Email" />
                             </Form.Item>
 
                             <Form.Item
@@ -114,21 +103,43 @@ class Signup extends React.Component {
                                     },
                                 ]}
                             >
-                                <Input placeholder="fullname" />
+                                <Input placeholder="Họ và Tên" />
                             </Form.Item>
+
                             <Form.Item
-                                name="image_url" label="Ảnh"
+                                name="address"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your address!',
+                                    },
+                                ]}
+                            >
+                                <Input placeholder="Địa Chỉ" />
+                            </Form.Item>
+
+                            <Form.Item
+                                name="mobile"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your mobile!',
+                                    },
+                                ]}
+                            >
+                                <Input placeholder="Số Điện Thoại" />
+                            </Form.Item>
+
+                            <Form.Item
+                                name="image_url" label="Ảnh Bìa"
                             >
                                 <Upload {...this.uploadProps}>
-                                    <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                                    <Button icon={<UploadOutlined />}>  Upload Ảnh Bìa  </Button>
                                 </Upload>
                             </Form.Item>
                             <Form.Item {...tailLayout}>
-                                <Button type="primary" htmlType="submit"> Đăng nhập </Button>
+                                <Button type="primary" htmlType="submit"> Đăng Kí Tài Khoản </Button>
                             </Form.Item>
-                            <div>
-                                <small>Không có tài khoản?</small> <a href="signup"><small>Tạo tài khoản</small></a>
-                            </div>
                         </Form>
                     </div>
                 </div>

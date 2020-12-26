@@ -32,8 +32,12 @@ class Login extends React.Component {
                         window.dispatch({ type: 'LOGIN', data: true });
                         this.props.history.push('/');
                     }
+                    else if(response.data.error.code === 404) {
+                        alert('Tài Khoản Này Không Tồn Tại');
+                    }
                     else {
                         alert('Đăng nhập không thành công');
+                        this.props.history.push('/login')
                     }
                 }
             )

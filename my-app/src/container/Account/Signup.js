@@ -32,7 +32,7 @@ class Signup extends React.Component {
         values.type = '3';
         console.log('POST')
         console.log(values)
-        axios.post(`${BASE_URL}/v1/login/signup`, values)
+        axios.post(`${STAT_URL}/v1/login/signup`, values)
             .then((response) => {
                 this.setState({ visible: false }, () => {
                     if (response.data.error.code === 200) {

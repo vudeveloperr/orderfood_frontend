@@ -1,8 +1,8 @@
-import { LOGGED } from './action_types'
+import { LOGIN } from './action_types'
 
 export default {
     loggedIn: (data) => ({
-        type: LOGGED,
+        type: LOGIN,
         params: {
             data,
         },

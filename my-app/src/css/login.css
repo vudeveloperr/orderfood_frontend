@@ -58,3 +58,10 @@
 h2{
     font-family: monospace;
 }
+
+.login-container{
+    align-items: center;
+    width: 400px;
+    margin: auto;
+    padding-top: 70px;
+}

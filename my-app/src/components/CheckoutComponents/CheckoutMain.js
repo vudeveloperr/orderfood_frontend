@@ -2,37 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Input } from 'antd';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
+import { STAT_URL } from '../../consts';
 
-import {STAT_URL } from '../../consts';
-
-class CheckoutMain extends React.Component{
-    constructor(props){
+class CheckoutMain extends React.Component {
+    constructor(props) {
         super(props);
     }
 
     onFinish = (values) => {
         console.log(values);
         console.log(this.props.cart);
-        values.list_food = this.props.cart;
+        values.list_food = this.props.cart.filter(x => !!x);
         values.store_id = this.props.shop;
-        
-        let config = {headers:{Auth: window.localStorage.getItem('token')}}
 
-        axios.post(`${STAT_URL}/v1/order`, values,config)
-        .then((response) => {
-            if(response.data.error.code === 200){
-                window.dispatch({type:'CLEAR'})
-                alert('Đặt hàng thành công');
-            }
-            else{
-                alert('Đặt hàng thất bại');
-            }
-        })
-        .catch()
+        let config = { headers: { Auth: window.localStorage.getItem('token') } }
+
+        axios.post(`${STAT_URL}/v1/order`, values, config)
+            .then((response) => {
+                if (response.data.error.code === 200) {
+                    window.dispatch({ type: 'CLEAR' })
+                    alert('Đặt hàng thành công');
+                }
+                else {
+                    this.props.history.push("/login");
+                }
+            })
+            .catch()
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <section className="checkout spad">
                 <div className="container">
                     <div className="checkout__form">
@@ -42,17 +42,17 @@ class CheckoutMain extends React.Component{
                             <div className="col-lg-8 col-md-6">
                                 <Form
                                     onFinish={this.onFinish}
-                                    initialValues = {{ghichu: ""}}
+                                    initialValues={{ ghichu: "" }}
                                 >
                                     <p>Địa chỉ <span>*</span></p>
-                                    <Form.Item name="address" 
-                                    rules={[
-                                        {
-                                          required: true,
-                                          message: 'Không bỏ trống địa chỉ',
-                                        },
-                                      ]}
-                                    className="checkout__input">
+                                    <Form.Item name="address"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'Không bỏ trống địa chỉ',
+                                            },
+                                        ]}
+                                        className="checkout__input">
                                         <Input className="checkout__input__add" />
                                     </Form.Item>
                                     <p>Thông tin bổ sung <span>*</span></p>
@@ -108,4 +108,4 @@ const mapStateToProps = (state) => {
         shop: state.shop.id,
     }
 }
-export default connect(mapStateToProps)(CheckoutMain)
+export default connect(mapStateToProps)(withRouter(CheckoutMain))

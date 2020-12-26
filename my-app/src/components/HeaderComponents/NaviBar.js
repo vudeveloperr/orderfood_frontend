@@ -17,7 +17,7 @@ class NaviBar extends React.Component {
                         </li>
                         {this.props.login === true ? 
                         <li>
-                            <Link to="">Lịch sử mua hàng</Link>
+                            <Link to="/history">Lịch sử mua hàng</Link>
                         </li>
                         :
                         <></>

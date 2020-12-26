@@ -16,17 +16,13 @@ class ShopProduct extends React.Component {
         this.state = { data: [] }
     }
     componentDidMount() {
-        // if (!this.props.match.params.id) {
-        //     if (!this.props.match.params.name) {
-        //         axios.get(`${STAT_URL}/foods`).then((respone) => this.setData(respone)).catch(console.log)
-        //     }
-        //     else {
-        //         axios.get(`${STAT_URL}/foods/search?name=${this.props.match.params.name}`).then((respone) => this.setData(respone)).catch(console.log)
-        //     }
-        // }
-        // else {
-        //     axios.get(`${STAT_URL}/foods?idtype=${this.props.match.params.id}`).then((respone) => this.setData(respone)).catch(console.log)
-        // }
+        axios.get(`${STAT_URL}/v1/food/store`)
+        .then((response) => {
+            if (response.data.error.code === 200) {
+                this.setState({data: response.data.data});   
+            }
+        })
+        .catch()
     }
     render() {
         return (
@@ -40,10 +36,10 @@ class ShopProduct extends React.Component {
                             <div className="section-title product__discount__title">
                                 <h2>Cửa hàng</h2>
                             </div>
-                            <ShopItemFilter count={this.props.shop.length}></ShopItemFilter>
+                            <ShopItemFilter count={this.state.data.length}></ShopItemFilter>
                             <div className="row">
-                                {this.props.shop.map((item, index) => {
-                                    return <ShopProductItem />
+                                {this.state.data.map((item, index) => {
+                                    return <ShopProductItem item={item}/>
                                 })}
 
                             </div>

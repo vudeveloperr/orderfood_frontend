@@ -12,7 +12,6 @@ class Home extends React.Component{
                 <Panel></Panel>
                 <Categories></Categories>
                 <Feature></Feature>
-                <AllSlide></AllSlide>
             </>
         );
     }

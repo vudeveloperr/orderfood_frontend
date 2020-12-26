@@ -17,18 +17,71 @@ class ShopDetailMain extends React.Component {
         super(props);
         this.state = { img: 'https://via.placeholder.com/150', qty: 1 };
         this.state.item = {};
-        this.state.comments = [];
+        this.state.comment = [];
         this.state.rate = 0;
         this.formRef = React.createRef();
     }
 
     componentDidMount() {
-        window.dispatch({type:'SET_SHOP_ID', data:this.props.match.params.id })
+        window.dispatch({ type: 'SET_SHOP_ID', data: this.props.match.params.id })
         axios.get(`${STAT_URL}/v1/food/listfoodstore?sid=${this.props.match.params.id}`)
             .then((respone) => {
                 if (respone.data.error.code === 200) {
                     console.log(respone.data.data)
                     window.dispatch({ type: 'SET_SHOP_ITEM', data: respone.data.data })
+                }
+            })
+            .catch(console.log)
+        axios.get(`${STAT_URL}/v1/store/comments?sid=${this.props.match.params.id}`)
+            .then((respone) => {
+                if (respone.data.error.code === 200) {
+                    this.setState({ comment: respone.data.data })
+                }
+            })
+            .catch(console.log)
+        axios.get(`${STAT_URL}/v1/store/rates?sid=${this.props.match.params.id}`)
+            .then((respone) => {
+                if (respone.data.error.code === 200) {
+                    this.setState({ rate: Math.floor(respone.data.data) })
+                }
+            })
+            .catch(console.log)
+        
+
+    }
+
+    onFinish = (values) => {
+        let config = { headers: { Auth: window.localStorage.getItem('token') } };
+        values.id_store = this.props.match.params.id;
+        axios.log(`${STAT_URL}/v1/store/comment`, values, config)
+            .then((respone) => {
+                if (respone.data.error.code === 200) {
+                    axios.get(`${STAT_URL}/v1/store/comments?sid=${this.props.match.params.id}`)
+                        .then((respone) => {
+                            if (respone.data.error.code === 200) {
+                                this.setState({ comment: respone.data.data }, () => console.log(this.state.comment))
+                            }
+                        })
+                        .catch(console.log)
+                }
+                else {
+                    this.props.history.push("/login");
+                }
+            })
+            .catch(console.log)
+    }
+
+    rate = value => { 
+        this.setState({ rate: value })
+        let values = {store_id:this.props.match.params.id, rate: value}
+        let config = { headers: { Auth: window.localStorage.getItem('token') } };
+        axios.post(`${STAT_URL}/v1/store/rate`, values, config)
+            .then((respone) => {
+                if (respone.data.error.code === 200) {
+                    alert('Cảm ơn bạn đã đánh giá cho cửa hàng')
+                }
+                else {
+                    this.props.history.push("/login");
                 }
             })
             .catch(console.log)
@@ -52,7 +105,7 @@ class ShopDetailMain extends React.Component {
                                     </thead>
                                     <tbody>
                                         {this.props.shopItem.map((item, index) => {
-                                            return <ShopDetailItem name={item.name} index={index} initValue={!!this.props.total[index] ? this.props.total[index].quantity : 0 } price={item.sale_price}
+                                            return <ShopDetailItem name={item.name} index={index} initValue={!!this.props.total[index] ? this.props.total[index].quantity : 0} price={item.sale_price}
                                                 img={IMAGE_URL + item.image} id={item.id}
                                             />
                                         })}
@@ -60,7 +113,7 @@ class ShopDetailMain extends React.Component {
                                 </table>
                             </div>
                             <div>
-                                Đánh giá cửa hàng: <span><Rate value={this.state.rate} onChange={(value) => { this.setState({ rate: value }) }} /></span>
+                                Đánh giá cửa hàng: <span><Rate value={this.state.rate} onChange={this.rate} /></span>
                             </div>
                             <div className="shoping__checkout" key={this.props.cart}>
                                 <h5>Tổng giỏ hàng</h5>
@@ -81,7 +134,7 @@ class ShopDetailMain extends React.Component {
                                     ref={this.formRef}
                                 >
                                     <Form.Item
-                                        name="noidung"
+                                        name="comment"
                                     >
                                         <TextArea
                                             placeholder="Nhận xét tại đây"
@@ -98,7 +151,7 @@ class ShopDetailMain extends React.Component {
                                     <div className="product__details__tab__desc">
                                         <div className="container">
                                             {
-                                                this.state.comments.map((item) => {
+                                                this.state.comment.map((item) => {
                                                     return (
                                                         <div class="row" style={{ margin: '10px auto 0px auto', borderBottom: '1px solid #dee2e6', width: '100%' }}>
                                                             <div className="media">
@@ -106,9 +159,9 @@ class ShopDetailMain extends React.Component {
                                                                     <img src="/user.png" class="media-object" style={{ width: '40px' }} />
                                                                 </div>
                                                                 <div className="media-body" style={{ marginLeft: '20px' }}>
-                                                                    <h4 className="media-heading title">{item.ten}</h4>
+                                                                    <h4 className="media-heading title">{ }</h4>
                                                                     <p className="komen">
-                                                                        {item.noidung}<br />
+                                                                        {item.comment}<br />
                                                                     </p>
                                                                 </div>
                                                             </div>

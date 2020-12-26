@@ -1,35 +1,29 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class HeaderCart extends React.Component {
     constructor(props) {
         super(props);
     }
+    
+    logout = () => {
+        window.localStorage.removeItem('token');
+        window.dispatch({type:'LOGIN', data: false});
+    }
+
     render() {
         return (
             <div className="col-lg-3">
-                {this.props.login ? <Login /> :
+                {this.props.login ?
                     <div className="header__cart">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <FontAwesomeIcon icon={faHeart} color="black" />
-                                    <span>{this.props.heart}</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <FontAwesomeIcon icon={faShoppingBag} color="black" />
-                                    <span>{this.props.bag}</span>
-                                </a>
-                            </li>
-                        </ul>
                         <div className="header__cart__price">
-                            item:<span>${this.props.price}</span>
+                            <a onClick={this.logout} className="login"> Đăng xuất</a>
                         </div>
                     </div>
+                    :
+                    <Login />
                 }
             </div>
         );

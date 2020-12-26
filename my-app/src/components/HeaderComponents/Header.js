@@ -11,8 +11,8 @@ class Header extends React.Component {
             <div className="container">
                 <div className="row">
                     <HeaderLogo></HeaderLogo>
-                    <NaviBar></NaviBar>
-                    <HeaderCart bag="3" heart="4" price="15000" login={this.props.login}></HeaderCart>
+                    <NaviBar login={this.props.login} ></NaviBar>
+                    <HeaderCart login={this.props.login}></HeaderCart>
                 </div>
             </div>
         );
